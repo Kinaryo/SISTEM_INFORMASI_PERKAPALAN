@@ -102,7 +102,7 @@
 <nav id="publicNavbar" class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#hero">
-            <img src="{{ asset('assets/icons/Icons_sistem_infomasi_perkapalan.png') }}" alt="Logo">
+            <img src="{{ asset('assets/icons/icons_sistem_infomasi_perkapalan.png') }}" alt="Logo">
             Sistem Informasi Perizinan Kapal
         </a>
 

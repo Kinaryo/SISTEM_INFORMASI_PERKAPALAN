@@ -10,7 +10,7 @@
                     <div class="card-body text-center">
                         <!-- Icon kotak (siku tajam) -->
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/icons/Icons_sistem_infomasi_perkapalan.png') }}" alt="Logo"
+                            <img src="{{ asset('assets/icons/icons_sistem_infomasi_perkapalan.png') }}" alt="Logo"
                                 class="mb-3 square-icon">
                         </a>
 
