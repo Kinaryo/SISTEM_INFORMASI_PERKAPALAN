@@ -2,10 +2,13 @@
 
 @section('content')
     <div class="container p-2">
-        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-            <h4 class="fw-bold">PROFILE</h4>
+        <div>
+            <h5 class="fw-bold text-primary mb-0">
+                <i class="bi bi-person"></i>
+                <span>PROFILE</span>
+            </h5>
+            <hr class="mt-1 mb-3">
         </div>
-
         {{-- Form Profil --}}
         <div class="card p-4 mb-4 shadow-sm" id="profileCard">
             <h6 id="editNotice" class="text-primary d-none">Edit Profil :</h6>
@@ -130,7 +133,7 @@
             const labelToKey = {
                 'nama': 'nama',
                 'nik': 'nik',
-                'nohp': 'no_hp',   // <-- perbaikan
+                'nohp': 'no_hp', // <-- perbaikan
                 'alamat': 'alamat',
                 'email': 'email'
             };
@@ -196,21 +199,27 @@
                     didOpen: () => Swal.showLoading()
                 });
 
-                fetch('{{ route("user.updateProfile") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(data)
-                })
+                fetch('{{ route('user.updateProfile') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(data)
+                    })
                     .then(async res => {
                         // jika status 422 (validasi), ambil JSON juga
                         const json = await res.json().catch(() => ({}));
-                        return { status: res.status, json };
+                        return {
+                            status: res.status,
+                            json
+                        };
                     })
-                    .then(({ status, json }) => {
+                    .then(({
+                        status,
+                        json
+                    }) => {
                         Swal.close();
 
                         // tampilkan error validasi (422) atau success
@@ -231,21 +240,25 @@
                             changePasswordBtn.classList.remove('d-none');
                             document.getElementById('editNotice').classList.add('d-none');
 
-                            Swal.fire('Berhasil', json.message || 'Data profil berhasil diperbarui!', 'success');
+                            Swal.fire('Berhasil', json.message || 'Data profil berhasil diperbarui!',
+                                'success');
                         } else if (json.errors) {
                             // json.errors adalah object: { field: [msg, ...], ... }
                             for (const [field, messages] of Object.entries(json.errors)) {
                                 // cari row yang sesuai
                                 const row = [...profileCard.querySelectorAll('.mb-3.row')].find(r => {
-                                    const rawLabel = r.querySelector('.fw-semibold').textContent || '';
-                                    const normLabel = rawLabel.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    const rawLabel = r.querySelector('.fw-semibold')
+                                        .textContent || '';
+                                    const normLabel = rawLabel.trim().toLowerCase().replace(
+                                        /[^a-z0-9]/g, '');
                                     return labelToKey[normLabel] === field;
                                 });
                                 if (row) {
                                     const input = row.querySelector('.edit');
                                     if (input) {
                                         input.classList.add('is-invalid');
-                                        row.querySelector('.invalid-feedback').textContent = messages.join(', ');
+                                        row.querySelector('.invalid-feedback').textContent = messages
+                                            .join(', ');
                                     }
                                 }
                             }
@@ -253,7 +266,8 @@
                             // optional: tampilkan toast ringkasan
                             Swal.fire('Validasi gagal', json.message || 'Periksa input Anda.', 'error');
                         } else {
-                            Swal.fire('Gagal', json.message || 'Terjadi kesalahan saat menyimpan data!', 'error');
+                            Swal.fire('Gagal', json.message || 'Terjadi kesalahan saat menyimpan data!',
+                                'error');
                         }
                     })
                     .catch(err => {
@@ -299,24 +313,31 @@
                     didOpen: () => Swal.showLoading()
                 });
 
-                fetch('{{ route("user.changePassword") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify(data)
-                })
+                fetch('{{ route('user.changePassword') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify(data)
+                    })
                     .then(async res => {
                         const json = await res.json().catch(() => ({}));
-                        return { status: res.status, json };
+                        return {
+                            status: res.status,
+                            json
+                        };
                     })
-                    .then(({ status, json }) => {
+                    .then(({
+                        status,
+                        json
+                    }) => {
                         Swal.close();
 
                         if (status === 200 && json.success) {
-                            Swal.fire('Berhasil', json.message || 'Password berhasil diperbarui!', 'success');
+                            Swal.fire('Berhasil', json.message || 'Password berhasil diperbarui!',
+                                'success');
                             passwordForm.reset();
                             passwordCard.classList.add('d-none');
                             profileCard.classList.remove('d-none');
@@ -332,7 +353,8 @@
                             }
                             Swal.fire('Validasi gagal', json.message || 'Periksa input Anda.', 'error');
                         } else {
-                            Swal.fire('Gagal', json.message || 'Terjadi kesalahan saat mengganti password!', 'error');
+                            Swal.fire('Gagal', json.message ||
+                                'Terjadi kesalahan saat mengganti password!', 'error');
                         }
                     })
                     .catch(err => {
@@ -343,5 +365,4 @@
             });
         });
     </script>
-
 @endsection

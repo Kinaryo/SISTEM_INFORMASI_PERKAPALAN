@@ -3,13 +3,18 @@
 @section('title', 'Pengajuan Permohonan')
 
 @section('content')
-    <div class="container p-2">
-        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-            <h4 class="fw-bold">FORM PENGAJUAN PERMOHONAN</h4>
+    <div class="container p-3">
+         <div>
+            <h5 class="fw-bold text-primary mb-0">
+                <i class="bi bi-file-earmark-text"></i>
+                <span >PENGAJUAN PERMOHONAN</span>
+            </h5>
+            <hr class="mt-1 mb-3">
         </div>
 
         <div class="card shadow border-0 rounded-4">
             <div class="card-body">
+                       <h5 class="">Form Pengajuan Permohonan</h5>
                 {{-- Notifikasi --}}
                 @if (session('success'))
                     <div class="alert alert-success rounded text-center">

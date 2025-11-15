@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div class="bg-secondary-subtle" style="height: 100vh">
+    <div class="bg-secondary-subtle" style="height: 100%">
         @yield('content')
     </div>
 

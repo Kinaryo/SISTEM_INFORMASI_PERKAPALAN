@@ -5,7 +5,7 @@
     <div class="card shadow-lg border-0 rounded-4">
         <div class="card-body text-center p-5">
             <h1 class="fw-bold mb-3" style="font-family: 'Montserrat', sans-serif; color:#003366;">
-                Dashboard Admin ⚓
+                Dashboard Admin
             </h1>
             <p class="lead" style="font-family: 'Poppins', sans-serif;">
                 Hai, {{ auth()->user()->name }} — Anda masuk sebagai <strong>Admin</strong>.

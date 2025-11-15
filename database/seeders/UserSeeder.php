@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         //Super Admin (hanya satu)
         User::create([
-            'name' => 'Super Admin',
+            'name' => 'Ahmat',
             'nik' => '1234567890123456',
             'no_hp' => '081234567890',
             'alamat' => 'Jl. Super Admin No.1',

@@ -3,9 +3,13 @@
 @section('title', 'DATA KAPAL')
 
 @section('content')
-    <div class="container p-2">
-        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
-            <h4 class="fw-bold">DATA KAPAL</h4>
+    <div class="container p-3">
+        <div>
+            <h5 class="fw-bold text-primary mb-0">
+                <i class="fa-solid fa-ship me-1"></i>
+                <span>DATA KAPAL</span>
+            </h5>
+            <hr class="mt-1 mb-3">
         </div>
 
         <div class="d-flex justify-content-end mb-3">

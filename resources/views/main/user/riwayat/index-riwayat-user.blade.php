@@ -21,9 +21,14 @@
         }
     </style>
 
-    <div class="container p-2">
-        <h4 class="fw-bold mb-3">Riwayat Pengajuan Izin</h4>
-
+    <div class="container p-3">
+        <div>
+            <h5 class="fw-bold text-primary mb-0">
+                <i class="bi bi-clock-history"></i>
+                <span>RIWAYAT PERMOHONAN</span>
+            </h5>
+            <hr class="mt-1 mb-3">
+        </div>
         @if($riwayat->isNotEmpty())
 
             <div class="table-responsive">

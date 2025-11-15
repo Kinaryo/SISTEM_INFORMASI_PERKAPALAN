@@ -82,7 +82,7 @@
 
     @media (max-width: 576px) {
         .navbar-brand {
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             /* lebih kecil di ponsel kecil */
         }
 
